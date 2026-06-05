@@ -1,0 +1,298 @@
+﻿Log file open, 01/29/26 21:53:31
+LogWindows: Failed to load 'aqProf.dll' (GetLastError=126)
+LogWindows: File 'aqProf.dll' does not exist
+LogProfilingDebugging: Loading WinPixEventRuntime.dll for PIX profiling (from ../../../Engine/Binaries/ThirdParty/Windows/WinPixEventRuntime/x64).
+LogWindows: Failed to load 'VtuneApi.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi.dll' does not exist
+LogWindows: Failed to load 'VtuneApi32e.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi32e.dll' does not exist
+LogCore: UTS: Unreal Trace Server launched successfully
+LogStats: Stats thread started at 0.095652
+LogICUInternationalization: ICU TimeZone Detection - Raw Offset: +9:00, Platform Override: ''
+LogInit: Session CrashGUID >====================================================
+         Session CrashGUID >   UECC-Windows-97DAC8934067AB7AC9CCE58589560945
+         Session CrashGUID >====================================================
+LogConfig: No local boot hotfix file found at: [../../../Engine/Programs/UnrealInsights/Saved/PersistentDownloadDir/HotfixForNextBoot.txt]
+LogPluginManager: Mounting Engine plugin AudioInsights
+LogPluginManager: Mounting Engine plugin ChaosInsights
+LogPluginManager: Mounting Engine plugin IoStoreInsights
+LogPluginManager: Mounting Engine plugin MassInsights
+LogPluginManager: Mounting Engine plugin RenderGraphInsights
+LogPluginManager: Mounting Engine plugin AudioWidgets
+LogPluginManager: Mounting Engine plugin NetworkPredictionInsights
+LogPluginManager: Mounting Engine plugin SlateInsights
+LogPluginManager: Mounting Engine plugin TcpMessaging
+LogPluginManager: Mounting Engine plugin UdpMessaging
+LogPluginManager: Mounting Engine plugin GameplayInsights
+LogPluginManager: Mounting Engine plugin VisualStudioSourceCodeAccess
+LogPluginManager: Mounting Engine plugin XCodeSourceCodeAccess
+LogInit: ExecutableName: UnrealInsights.exe
+LogInit: Build: ++UE5+Release-5.7-CL-49658320
+LogInit: Platform=WindowsEditor
+LogInit: MachineId=11add7c84a9b236344d366853f3131ca
+LogInit: DeviceId=
+LogInit: Engine Version: 5.7.2-49658320+++UE5+Release-5.7
+LogInit: Compatible Engine Version: 5.7.0-47537391+++UE5+Release-5.7
+LogInit: Net CL: 47537391
+LogInit: OS: Windows 10 (22H2) [10.0.19045.6466] (), CPU: AMD Ryzen 7 3700X 8-Core Processor             , GPU: NVIDIA GeForce RTX 2060 SUPER
+LogInit: CPU Model ID: 17710, microcode revision: 0
+LogInit: Compiled (64-bit): Jan  9 2026 22:23:08
+LogInit: Architecture: x64
+LogInit: Compiled with Visual C++: 19.44.35222.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE5+Release-5.7
+LogInit: Command Line: -OpenTraceFile="E:\lifeAI\6.4\Saved\Profiling\20260208_175140_1F95F0.utrace"   -ABSLOG="E:\lifeAI\6.4\Documents\Profiling\Insights_20260208_175140_1F95F0.log"   -NoUI   -AutoQuit   -ExecOnAnalysisCompleteCmd="@=E:\lifeAI\6.4\Documents\Profiling\dynamic_export.rsp" -Messaging
+LogInit: Base Directory: E:/UE/UE_5.7/Engine/Binaries/Win64/
+LogInit: Allocator: Mimalloc
+LogInit: Installed Engine Build: 1
+LogInit: This binary is optimized with LTO: no, PGO: no, instrumented for PGO data collection: no
+LogDevObjectVersion: Number of dev versions registered: 35
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 4
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 40
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 37
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 3
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 20
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 49
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 13
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 3
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 15
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 225
+LogDevObjectVersion:   FortniteValkyrie (8DBC2C5B-54A7-43E0-A768-FCBB7DA29060): 8
+LogDevObjectVersion:   FortniteSeason (5B4C06B7-2463-4AF8-805B-BF70CDF5D0DD): 15
+LogDevObjectVersion:   FortniteRelease (E7086368-6B23-4C58-8439-1B7016265E91): 17
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 11
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogDevObjectVersion:   Dev-Destruction (174F1F0B-B4C6-45A5-B13F-2EE8D0FB917D): 10
+LogDevObjectVersion:   Dev-Physics-Ext (35F94A83-E258-406C-A318-09F59610247C): 41
+LogDevObjectVersion:   Dev-PhysicsMaterial-Chaos (B68FC16E-8B1B-42E2-B453-215C058844FE): 1
+LogDevObjectVersion:   Dev-CineCamera (B2E18506-4273-CFC2-A54E-F4BB758BBA07): 1
+LogDevObjectVersion:   Dev-VirtualProduction (64F58936-FD1B-42BA-BA96-7289D5D0FA4E): 1
+LogDevObjectVersion:   UE5-Main (697DD581-E64F-41AB-AA4A-51ECBEB7B628): 121
+LogDevObjectVersion:   UE5-Release (D89B5E42-24BD-4D46-8412-ACA8DF641779): 61
+LogDevObjectVersion:   UE5-SpecialProject (59DA5D52-1232-4948-B878-597870B8E98B): 9
+LogDevObjectVersion:   Dev-MediaFramework (6F0ED827-A609-4895-9C91-998D90180EA4): 2
+LogDevObjectVersion:   Dev-NaniteResearch (30D58BE3-95EA-4282-A6E3-B159D8EBB06A): 1
+LogInit: Presizing for max 100000 objects, including 0 objects not considered by GC.
+LogInit: Object subsystem initialized
+LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+LogConfig: CVar [[r.DumpShaderDebugInfo:2]] deferred - dummy variable created
+LogConfig: CVar [[p.chaos.AllowCreatePhysxBodies:1]] deferred - dummy variable created
+LogConfig: CVar [[fx.SkipVectorVMBackendOptimizations:1]] deferred - dummy variable created
+LogConfig: Applying CVar settings from Section [Startup_Windows] File [../../../Engine/Config/ConsoleVariables.ini]
+LogConfig: Applying CVar settings from Section [ConsoleVariables] File [Engine]
+LogConfig: Set CVar [[WindowsApplication.UseWorkerThreadForRawInput:0]]
+[2026.01.29-12.53.31:432][  0]LogInit: Computer: DESKTOP-DOPPLE
+[2026.01.29-12.53.31:432][  0]LogInit: User: dopple
+[2026.01.29-12.53.31:432][  0]LogInit: CPU Page size=4096, Cores=8
+[2026.01.29-12.53.31:432][  0]LogInit: High frequency timer resolution =10.000000 MHz
+[2026.01.29-12.53.31:432][  0]LogInit: Handheld Device: 0
+[2026.01.29-12.53.31:432][  0]LogMemory: Memory total: Physical=32.0GB (32GB approx) Virtual=45.5GB
+[2026.01.29-12.53.31:432][  0]LogMemory: Platform Memory Stats for WindowsEditor
+[2026.01.29-12.53.31:432][  0]LogMemory: Process Physical Memory: 67.11 MB used, 67.11 MB peak
+[2026.01.29-12.53.31:432][  0]LogMemory: Process Virtual Memory: 125.57 MB used, 125.57 MB peak
+[2026.01.29-12.53.31:432][  0]LogMemory: Physical Memory: 23678.78 MB used,  9038.46 MB free, 32717.24 MB total
+[2026.01.29-12.53.31:432][  0]LogMemory: Virtual Memory: 35827.09 MB used,  10714.14 MB free, 46541.24 MB total
+[2026.01.29-12.53.31:442][  0]LogUObjectArray: 720 objects as part of root set at end of initial load.
+[2026.01.29-12.53.31:442][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2026.01.29-12.53.31:443][  0]LogInit: Using OS detected language (ko-KR).
+[2026.01.29-12.53.31:443][  0]LogInit: Using OS detected locale (ko-KR).
+[2026.01.29-12.53.31:443][  0]LogTextLocalizationManager: No specific localization for 'ko-KR' exists, so 'ko' will be used for the language.
+[2026.01.29-12.53.31:506][  0]LogInit: Using OS detected language (ko-KR).
+[2026.01.29-12.53.31:506][  0]LogInit: Using OS detected locale (ko-KR).
+[2026.01.29-12.53.31:506][  0]LogTextLocalizationManager: No localization for 'ko-KR' exists, so 'en' will be used for the language.
+[2026.01.29-12.53.31:506][  0]LogTextLocalizationManager: No localization for 'ko-KR' exists, so 'en' will be used for the locale.
+[2026.01.29-12.53.31:569][  0]LogPackageLocalizationCache: Processed 4 localized package path(s) for 1 prioritized culture(s) in 0.000242 seconds
+[2026.01.29-12.53.31:569][  0]LogSlate: Using FreeType 2.10.0
+[2026.01.29-12.53.31:569][  0]LogSlate: SlateFontServices - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2026.01.29-12.53.31:587][  0]LogWindowsTextInputMethodSystem: Available input methods:
+[2026.01.29-12.53.31:587][  0]LogWindowsTextInputMethodSystem:   - 한국어(대한민국) - Microsoft 입력기 (TSF IME).
+[2026.01.29-12.53.31:587][  0]LogWindowsTextInputMethodSystem:   - 한국어(대한민국) - 터치식 입력 수정 (TSF IME).
+[2026.01.29-12.53.31:587][  0]LogWindowsTextInputMethodSystem: Activated input method: 한국어(대한민국) - Microsoft 입력기 (TSF IME).
+[2026.01.29-12.53.31:607][  0]LogWindowsTouchpad: Display: CacheForceMaxTouchpadSensitivityMode SetTouchpadParameters
+[2026.01.29-12.53.31:614][  0]LogSlate: New Slate User Created. Platform User Id 0, User Index 0, Is Virtual User: 0
+[2026.01.29-12.53.31:614][  0]LogSlate: Slate User Registered.  User Index 0, Is Virtual User: 0
+[2026.01.29-12.53.31:633][  0]LogStandaloneRenderer: D3D11 adapters settings:
+[2026.01.29-12.53.31:633][  0]LogStandaloneRenderer: D3D11 adapters:
+[2026.01.29-12.53.31:633][  0]LogStandaloneRenderer: Testing D3D11 adapter: 0. Description: 'NVIDIA GeForce RTX 2060 SUPER'. VendorId: 10de. DeviceId: 1f06.
+[2026.01.29-12.53.31:806][  0]LogStandaloneRenderer:   0. 'NVIDIA GeForce RTX 2060 SUPER'. Feature level: 11_1
+[2026.01.29-12.53.31:806][  0]LogStandaloneRenderer: Testing D3D11 adapter: 1. Description: 'Microsoft Basic Render Driver'. VendorId: 1414. DeviceId: 008c.
+[2026.01.29-12.53.31:809][  0]LogStandaloneRenderer:   1. 'Microsoft Basic Render Driver'. Feature level: 11_1
+[2026.01.29-12.53.31:809][  0]LogStandaloneRenderer:   Skip adapter.
+[2026.01.29-12.53.31:809][  0]LogStandaloneRenderer: Selected D3D11 Description: 'NVIDIA GeForce RTX 2060 SUPER'. VendorId: 10de. DeviceId: 1f06.
+[2026.01.29-12.53.31:970][  0]LogStreaming: Warning: Failed to read file '../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_24x.png' error.
+[2026.01.29-12.53.31:970][  0]LogSlateD3D: Warning: Could not find file for Slate resource: [../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_24x.png] '../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_24x.png'
+[2026.01.29-12.53.31:970][  0]LogStreaming: Warning: Failed to read file '../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_128x.png' error.
+[2026.01.29-12.53.31:970][  0]LogSlateD3D: Warning: Could not find file for Slate resource: [../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_128x.png] '../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_128x.png'
+[2026.01.29-12.53.31:970][  0]LogStreaming: Warning: Failed to read file '../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_128x.png' error.
+[2026.01.29-12.53.31:970][  0]LogSlateD3D: Warning: Could not find file for Slate resource: [../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_128x.png] '../../../Engine/Platforms/VisionOS/Content/Editor/Slate/Launcher/Platform_VisionOS_128x.png'
+[2026.01.29-12.53.32:060][  0]LogTimingProfiler: Initialize
+[2026.01.29-12.53.32:060][  0]LogTimingProfiler: OnSessionChanged
+[2026.01.29-12.53.32:060][  0]LoadingProfiler: Initialize
+[2026.01.29-12.53.32:061][  0]LoadingProfiler: OnSessionChanged
+[2026.01.29-12.53.32:061][  0]LogNetworkingProfiler: Initialize
+[2026.01.29-12.53.32:061][  0]LogNetworkingProfiler: OnSessionChanged
+[2026.01.29-12.53.32:061][  0]LogMemoryProfiler: Initialize
+[2026.01.29-12.53.32:061][  0]LogMemoryProfiler: OnSessionChanged
+[2026.01.29-12.53.32:063][  0]LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+[2026.01.29-12.53.32:063][  0]LogTcpMessaging: Initializing TcpMessaging bridge
+[2026.01.29-12.53.32:065][  0]LogUdpMessaging: Display: Work queue size set to 1024.
+[2026.01.29-12.53.32:065][  0]LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.
+[2026.01.29-12.53.32:066][  0]LogUdpMessaging: Display: Unicast socket bound to '0.0.0.0:61433'.
+[2026.01.29-12.53.32:071][  0]LogUdpMessaging: Display: Added local interface '192.168.0.114' to multicast group '230.0.0.1:6666'
+[2026.01.29-12.53.32:071][  0]LogUdpMessaging: Display: Added local interface '127.0.0.1' to multicast group '230.0.0.1:6666'
+[2026.01.29-12.53.32:071][  0]LogUdpMessaging: Display: Using asynchronous task graph for message deserialization.
+[2026.01.29-12.53.32:094][  0]LogInit: Setting process to per monitor DPI aware
+[2026.01.29-12.53.32:096][  0]LogMemoryProfiler: OnSessionChanged
+[2026.01.29-12.53.32:096][  0]LogNetworkingProfiler: OnSessionChanged
+[2026.01.29-12.53.32:096][  0]LoadingProfiler: OnSessionChanged
+[2026.01.29-12.53.32:096][  0]LogTimingProfiler: OnSessionChanged
+[2026.01.29-12.53.32:096][  0]LogInit: Display: Insights slate application initialized successfully.
+[2026.01.29-12.53.32:100][  0]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.01.29-12.53.32:104][  0]LogTraceServices: [GpuProfiler] Init Version=2
+[2026.01.29-12.53.32:116][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:117][  0]LogTraceServices: Error: [MemAlloc] Invalid Tag on Thread 2 (Tracker=0)!
+[2026.01.29-12.53.32:466][  1]LogTraceServices: Warning: [Regions] A region (BeginTime=0.881408, Id=0, Name="Session", Category="Uncategorized") was never closed.
+[2026.01.29-12.53.32:466][  1]LogTraceServices: Warning: [Regions] 1 warnings
+[2026.01.29-12.53.32:466][  1]LogTraceServices: [Regions] Analysis completed (14 timers, 2 categories, 457 timing regions, 4 lanes).
+[2026.01.29-12.53.32:466][  1]LogTraceServices: [MemTags] Analysis completed (0 trackers, 1 tag sets, 0 tags).
+[2026.01.29-12.53.32:466][  1]LogTraceServices: [Meta] Analysis completed (4103 events, 0 alloc events, 0 allocs, 0 bytes).
+[2026.01.29-12.53.32:466][  1]LogTraceServices: Error: [MemAlloc] TagTracker errors: 23189
+[2026.01.29-12.53.32:466][  1]LogTraceServices: [LoadTime] Analysis completed (0 threads, 0 active async packages, 0 active requests + 0 fake requests, 0 active linkers, 0 active batches, 0 exports, 11 classes).
+[2026.01.29-12.53.32:467][  1]LogTraceServices: [StackSampling] max stack size: 0 frames
+[2026.01.29-12.53.32:467][  1]LogTraceServices: [StackSampling] Analysis completed (0 timers, 0 timelines, 0 threads, 0 stack samples, 0 stack frames).
+[2026.01.29-12.53.32:467][  1]LogTraceServices: [CpuProfiler] Analysis completed (44 threads, 4002 timers, 4397 spec ids, 1800696 scopes, 8286511 bytes, 4.6 bytes/scope).
+[2026.01.29-12.53.32:467][  1]LogTraceServices: [GpuProfiler] Analysis completed (3 queues, 145 timers, 144 breadcrumb specs, 131 breadcrumb names).
+[2026.01.29-12.53.32:467][  1]LogTraceServices: [Verse] Analysis completed (0 timers, 0 samples; max stack size = 0).
+[2026.01.29-12.53.32:597][  2]TraceInsights: Analysis has completed in 503.09 ms (95.0X speed; session duration: 47.8s).
+[2026.01.29-12.53.32:597][  2]Executing commands on analysis completed...
+[2026.01.29-12.53.32:597][  2]Executing commands using response file ("E:\lifeAI\6.4\Documents\Profiling\dynamic_export.rsp")...
+[2026.01.29-12.53.32:597][  2]TimingInsights.ExportThreads "E:/lifeAI/6.4/Documents/Profiling/Threads.csv" 
+[2026.01.29-12.53.32:597][  2]  Filename: "E:/lifeAI/6.4/Documents/Profiling/Threads.csv"
+[2026.01.29-12.53.32:599][  2]TraceInsights: Exported 69 threads to file in 0.001s ("E:/lifeAI/6.4/Documents/Profiling/Threads.csv").
+[2026.01.29-12.53.32:599][  2]TimingInsights.ExportTimers "E:/lifeAI/6.4/Documents/Profiling/Timers.csv" 
+[2026.01.29-12.53.32:599][  2]  Filename: "E:/lifeAI/6.4/Documents/Profiling/Timers.csv"
+[2026.01.29-12.53.32:605][  2]TraceInsights: Exported 4165 timers to file in 0.006s ("E:/lifeAI/6.4/Documents/Profiling/Timers.csv").
+[2026.01.29-12.53.32:605][  2]TimingInsights.ExportTimerStatistics "E:/lifeAI/6.4/Documents/Profiling/TimerStats.csv" 
+[2026.01.29-12.53.32:605][  2]  Filename: "E:/lifeAI/6.4/Documents/Profiling/TimerStats.csv"
+[2026.01.29-12.53.32:788][  2]TraceInsights: Exported timing statistics to file in 0.024s ("E:/lifeAI/6.4/Documents/Profiling/TimerStats.csv").
+[2026.01.29-12.53.32:788][  2]Commands executed in 0.191s.
+[2026.01.29-12.53.32:788][  2]LogCore: Engine exit requested (reason: Application is closing because it was started with the AutoQuit parameter and session analysis is complete.)
+[2026.01.29-12.53.32:893][  3]LogSlate: Slate User Destroyed.  User Index 0, Is Virtual User: 0
+[2026.01.29-12.53.32:893][  3]LogExit: Preparing to exit.
+[2026.01.29-12.53.33:073][  3]LogExit: Object subsystem successfully closed.
+[2026.01.29-12.53.34:065][  3]LogMemoryProfiler: Shutdown
+[2026.01.29-12.53.34:065][  3]LogNetworkingProfiler: Shutdown
+[2026.01.29-12.53.34:065][  3]LoadingProfiler: Shutdown
+[2026.01.29-12.53.34:065][  3]LogTimingProfiler: Shutdown
+[2026.01.29-12.53.34:071][  3]LogAnalysisCache: Display: Closing analysis cache, 0.00 MiB read, 0.00 MiB written.
+[2026.01.29-12.53.34:077][  3]LogPakFile: Destroying PakPlatformFile
+[2026.01.29-12.53.34:079][  3]LogExit: Exiting.
+[2026.01.29-12.53.34:084][  3]Log file closed, 01/29/26 21:53:34

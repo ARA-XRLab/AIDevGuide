@@ -1,0 +1,49 @@
+ 분석 결과, 시작 시 HP UI가 0으로 표시되는 원인과 호출 순서의 문제점은 다음과 같습니다.
+
+
+  1. 원인 분석
+   - 변수 초기값: PlayerPawn.h에서 CurHP는 0으로 초기화되어 있습니다 (int32 CurHP = 0;).
+   - 호출 시점의 값: BeginPlay 내에서 GameMode->UpdatePlayerHP(CurHP)가 호출될 때, CurHP는 여전히 0인 상태입니다.
+   - 초기화 지연: 실제 MaxHP 값을 CurHP에 할당하는 코드(CurHP = MaxHP;)가 UI 업데이트 호출 이후에 실행됩니다.
+
+  2. 호출 순서 상세 (PlayerPawn.cpp)
+
+
+    1 void APlayerPawn::BeginPlay()
+    2 {
+    3     Super::BeginPlay();
+    4
+    5     // 1. GameMode를 가져와서 UI 업데이트를 먼저 요청함
+    6     if (AShootingGameMode* GameMode = Cast<AShootingGameMode>(GetWorld()->GetAuthGameMode()))
+    7     {
+    8         // 이때 CurHP는 선언 시 초기값인 0입니다.
+    9         GameMode->UpdatePlayerHP(CurHP); // UI에 0 전달
+   10     }
+   11
+   12     // 2. UI 업데이트 요청이 끝난 후에야 CurHP를 MaxHP(3)로 초기화함
+   13     CurHP = MaxHP; 
+   14
+   15     // (이후 로직...)
+   16 }
+
+  3. 해결 방안 (제안)
+  이 문제를 해결하려면 CurHP = MaxHP; 할당문을 UpdatePlayerHP 호출보다 위로 옮겨야 합니다.
+
+
+    1 void APlayerPawn::BeginPlay()
+    2 {
+    3     Super::BeginPlay();
+    4
+    5     // 값을 먼저 설정
+    6     CurHP = MaxHP;
+    7
+    8     // 설정된 값을 UI에 전달
+    9     if (AShootingGameMode* GameMode = Cast<AShootingGameMode>(GetWorld()->GetAuthGameMode()))
+   10     {
+   11         GameMode->UpdatePlayerHP(CurHP); // 이제 UI에 3이 전달됨
+   12     }
+   13     // ...
+   14 }
+
+
+  이처럼 현재 코드는 "초기화 전의 값을 외부 시스템(UI)에 먼저 보고"하고 있기 때문에 화면에 0이 표시되는 현상이 발생합니다. 추가로 해당 수정을 진행할까요?

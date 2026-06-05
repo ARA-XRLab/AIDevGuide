@@ -1,0 +1,51 @@
+name: QA Report Slack Notification
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Documents/Report/issue_report_*.md'
+
+jobs:
+  notify-slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 모든 변경 내역을 확인하기 위해 전체 히스토리 가져오기
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v44
+        with:
+          files: Documents/Report/issue_report_*.md
+
+      - name: Send notification to Slack
+        if: steps.changed-files.outputs.any_changed == 'true'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "Processing $file..."
+            
+            # 파일 내용 읽기
+            CONTENT=$(cat "$file")
+            
+            # jq를 사용하여 JSON 페이로드 생성 (특수문자 이스케이프 처리)
+            # Markdown 코드 블록(```)으로 감싸서 전송
+            PAYLOAD=$(jq -n 
+              --arg filename "$file" 
+              --arg content "$CONTENT" 
+              '{text: "📢 *QA Issue Report Updated: \($filename)*
+
+```
+\($content)
+```"}')
+            
+            # Slack Webhook 전송
+            curl -X POST -H 'Content-type: application/json' 
+              --data "$PAYLOAD" 
+              "$SLACK_WEBHOOK_URL"
+          done

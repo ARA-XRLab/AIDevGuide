@@ -1,0 +1,90 @@
+name: QA Report to Slack
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Documents/Report/issue_report_*.md'
+
+jobs:
+  send-to-slack:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # 이전 커밋과 비교하기 위해 2개 커밋 가져오기
+
+      - name: Get changed issue report files
+        id: get-files
+        run: |
+          # 현재 커밋에서 변경된 issue_report_*.md 파일 찾기
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep 'Documents/Report/issue_report_.*\.md' || echo "")
+
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No issue report files changed"
+            echo "has_files=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changed files: $CHANGED_FILES"
+            echo "has_files=true" >> $GITHUB_OUTPUT
+            # 첫 번째 파일을 사용 (일반적으로 하나만 있을 것으로 예상)
+            REPORT_FILE=$(echo "$CHANGED_FILES" | head -n 1)
+            echo "report_file=$REPORT_FILE" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Read report content and send to Slack
+        if: steps.get-files.outputs.has_files == 'true'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          REPORT_FILE: ${{ steps.get-files.outputs.report_file }}
+        run: |
+          # 파일 내용 읽기
+          REPORT_CONTENT=$(cat "$REPORT_FILE")
+
+          # 파일 이름 추출
+          FILE_NAME=$(basename "$REPORT_FILE")
+
+          # Slack 메시지 JSON 생성 (jq 사용하여 안전한 JSON 생성)
+          MESSAGE=$(jq -n \
+            --arg filename "$FILE_NAME" \
+            --arg content "$REPORT_CONTENT" \
+            '{
+              text: "🔔 New QA Report Available",
+              blocks: [
+                {
+                  type: "header",
+                  text: {
+                    type: "plain_text",
+                    text: "📋 QA Issue Report"
+                  }
+                },
+                {
+                  type: "section",
+                  text: {
+                    type: "mrkdwn",
+                    text: ("*File:* `" + $filename + "`")
+                  }
+                },
+                {
+                  type: "section",
+                  text: {
+                    type: "mrkdwn",
+                    text: ("```\n" + $content + "\n```")
+                  }
+                }
+              ]
+            }')
+
+          # Slack Webhook으로 전송
+          curl -X POST "$SLACK_WEBHOOK_URL" \
+            -H 'Content-Type: application/json' \
+            -d "$MESSAGE"
+
+          echo "QA report sent to Slack successfully!"
+
+      - name: No report files changed
+        if: steps.get-files.outputs.has_files == 'false'
+        run: |
+          echo "No issue report files were changed in this push."

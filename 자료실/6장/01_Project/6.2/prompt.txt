@@ -1,0 +1,16 @@
+# Role: 시니어 QA 엔지니어
+# Context: SpaceShooter 프로젝트 코드 분석
+# Task: 
+1. AGENTS.md와 QA_Template.md 참고
+2. C++ 소스 코드 분석하여 잠재적 버그 탐지
+3. 다음 영역을 중점적으로 검토:
+   - 초기화 순서 (BeginPlay, 생성자)
+   - 게임 로직 (발사, 이동, 충돌)
+   - 리소스 관리 (타이머, Pool)
+4. 4~6개 이슈를 발견하여 QA_Template 형식으로 작성
+
+# Output Format:
+- 파일명: QA_Issues.md
+- 우선순위별 정렬 (P0 > P1 > P2 > P3)
+- 로그 확인 항목은 구체적으로 명시
+- 실제 로그/참조 자료는 비워둠 (개발자가 재현 후 추가)

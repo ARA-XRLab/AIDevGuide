@@ -1,0 +1,23 @@
+• 원인과 호출 순서는 다음과 같습니다.
+
+• 원인 요약
+
+  - AEnemyActor::TryStartFiring()에서 bHasFired를 전혀 체크하지 않아서 플레이어가 EncounterRadius 안에 있는 동안, 발사가 끝날 때마다 다시 즉시 재시작됩니다.
+  - EndFiring()은 bIsFiring = false로만 끝내고, 이후 Tick()에서 다시 TryStartFiring()가 호출되어 무한 반복 패턴이 됩니다.
+  - 코드에 bHasFired가 선언되어 있지만 실제로 재발사 제한에 사용되지 않음.
+
+  확인 위치
+
+  - Source/SpaceShooter/Private/EnemyActor.cpp
+      - AEnemyActor::Tick() → TryStartFiring() 호출
+      - AEnemyActor::TryStartFiring() → bHasFired 체크 없음
+      - AEnemyActor::EndFiring() → bHasFired = true 설정됨 (하지만 활용 안 됨)
+
+  실제 흐름 (요약)
+
+  1. 플레이어가 반경 안으로 들어옴
+  2. TryStartFiring() 시작 → 연사
+  3. EndFiring()에서 bIsFiring=false, bHasFired=true
+  4. 다음 Tick에 다시 TryStartFiring() 진입 → 재시작 (무한 반복)
+
+  원하시면 수정 방향(예: bHasFired 체크, 쿨다운 추가, 반경 이탈 시에만 재발사 허용)을 정리해드릴게요.

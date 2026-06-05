@@ -1,0 +1,3 @@
+TimingInsights.ExportThreads "E:/lifeAI/6.4/Documents/Profiling/Threads.csv" 
+TimingInsights.ExportTimers "E:/lifeAI/6.4/Documents/Profiling/Timers.csv" 
+TimingInsights.ExportTimerStatistics "E:/lifeAI/6.4/Documents/Profiling/TimerStats.csv" 

@@ -1,0 +1,3 @@
+TimingInsights.ExportThreads "E:/SpaceShooter/Documents/Profiling/Threads.csv" 
+TimingInsights.ExportTimers "E:/SpaceShooter/Documents/Profiling/Timers.csv" 
+TimingInsights.ExportTimerStatistics "E:/SpaceShooter/Documents/Profiling/TimerStats.csv" 

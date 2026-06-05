@@ -1,0 +1,20 @@
+• 원인과 호출 순서는 다음과 같습니다.
+
+  원인
+
+  - APlayerPawn::BeginPlay에서 CurHP를 MaxHP로 설정하기 전에 AShootingGameMode::UpdatePlayerHP(CurHP)를 호출합니다. 그래서 UI는 초기값 CurHP = 0으로 갱신됩니다.
+  - 확인 위치: Source/SpaceShooter/Private/PlayerPawn.cpp
+
+  호출 순서 (코드 기준)
+
+  1. APlayerPawn::BeginPlay() 진입
+  2. GameMode->UpdatePlayerHP(CurHP) 호출됨 (이 시점 CurHP == 0)
+  3. CurHP = MaxHP 설정
+  4. 이후 UI는 다시 갱신되지 않으면 0이 유지됨
+
+  관련 함수 동작
+
+  - AShootingGameMode::UpdatePlayerHP는 내부에서 MainWidget->UpdatePlayerHP(CurHP)를 호출해 UI를 즉시 갱신합니다.
+  - 확인 위치: Source/SpaceShooter/Private/ShootingGameMode.cpp
+
+  필요하면 수정 제안도 바로 정리해줄게요.
