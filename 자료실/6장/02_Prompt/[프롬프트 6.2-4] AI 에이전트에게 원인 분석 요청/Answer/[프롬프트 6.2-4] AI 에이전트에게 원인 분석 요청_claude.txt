@@ -1,0 +1,217 @@
+● 적 발사 패턴 반복 실행 문제 분석
+
+  ---
+  문제 1: bHasFired 가드 제거로 인한 무한 반복
+
+  현재 코드 (EnemyActor.cpp:89-129)
+
+  void AEnemyActor::TryStartFiring()
+  {
+      // ⚠️ 주석에 명시: "bHasFired / bIsFiring 가드 제거: 중복 타이머 누적 가능"
+      // 가드가 없음!
+
+      APawn* PlayerPawn = GetWorld() ? GetWorld()->GetFirstPlayerController()->GetPawn() : nullptr;
+      if (!PlayerPawn)
+      {
+          return;
+      }
+
+      // ... 거리 체크, 방향 계산
+
+      // 발사 시작
+      bIsFiring = true;  // ← 플래그만 설정하고
+      // ... 타이머 설정
+  }
+
+  호출 흐름:
+
+  매 프레임마다 (60fps 기준 초당 60회):
+    Tick(DeltaTime)
+      └─ if (!bIsFiring)  ← bIsFiring = false일 때만
+           └─ TryStartFiring()
+                └─ if (Distance <= EncounterRadius)
+                     └─ bIsFiring = true;
+                          SetTimer(FireOneBullet, 0.2초 간격)
+
+  문제점:
+  - bHasFired 가드가 없어서 한 번 발사한 적이 다시 발사할 수 있음
+  - EndFiring()에서 bHasFired = true로 설정하지만 (169행)
+  - TryStartFiring()에서 bHasFired 체크를 하지 않음!
+
+  ---
+  문제 2: CurrentBurstCount 초기화 오류로 1발만 발사
+
+  EnemyActor.cpp:119-120
+  TargetBurstCount = FMath::RandRange(MinBurstCount, MaxBurstCount);  // 예: 3~5
+  CurrentBurstCount = TargetBurstCount;  // ⚠️ 오류: 목표값으로 초기화!
+
+  FireOneBullet() 로직 (139-163행)
+  void AEnemyActor::FireOneBullet()
+  {
+      CurrentBurstCount++;  // 139행: 증가 (예: 3 → 4)
+
+      // ... 총알 발사
+
+      // 160행: 연발 완료 체크
+      if (CurrentBurstCount >= TargetBurstCount)  // 4 >= 3 → true
+      {
+          EndFiring();  // 즉시 종료!
+      }
+  }
+
+  타임라인:
+
+  ┌──────────────────────────────────┬───────────────────┬──────────────────┬───────────────────┬─────────────────┐
+  │               시점               │ CurrentBurstCount │ TargetBurstCount │       동작        │      비고       │
+  ├──────────────────────────────────┼───────────────────┼──────────────────┼───────────────────┼─────────────────┤
+  │ TryStartFiring 호출              │ 0 → 3             │ 3                │ 초기화 (오류!)    │ 목표값으로 설정 │
+  ├──────────────────────────────────┼───────────────────┼──────────────────┼───────────────────┼─────────────────┤
+  │ 127행: FireOneBullet() 즉시 호출 │ 3 → 4             │ 3                │ 첫 발 발사        │ ++ 연산         │
+  ├──────────────────────────────────┼───────────────────┼──────────────────┼───────────────────┼─────────────────┤
+  │ 160행: 체크                      │ 4                 │ 3                │ 4 >= 3 → true     │ 즉시 종료!      │
+  ├──────────────────────────────────┼───────────────────┼──────────────────┼───────────────────┼─────────────────┤
+  │ EndFiring() 호출                 │ 4                 │ 3                │ bIsFiring = false │ 타이머 정리     │
+  └──────────────────────────────────┴───────────────────┴──────────────────┴───────────────────┴─────────────────┘
+
+  결과:
+  - 첫 발만 발사하고 즉시 EndFiring() 호출
+  - 타이머가 설정되었지만 한 번도 실행되지 않음 (즉시 Clear됨)
+
+  ---
+  문제 3: EndFiring 후 재발사 가능
+
+  EnemyActor.cpp:166-174
+  void AEnemyActor::EndFiring()
+  {
+      bIsFiring = false;  // ← 발사 중 플래그 해제
+      bHasFired = true;   // ← 발사 완료 플래그 설정
+      GetWorldTimerManager().ClearTimer(FireTimerHandle);
+
+      // 발사 방향으로 이동 방향 변경
+      MoveDirection = FireDirection;
+  }
+
+  Tick() 흐름 (77-87행)
+  void AEnemyActor::Tick(float DeltaTime)
+  {
+      // 발사 중이면 이동하지 않음
+      if (!bIsFiring)  // ← bIsFiring = false이면 진입
+      {
+          SetActorLocation(GetActorLocation() + MoveDirection * Speed * DeltaTime);
+          TryStartFiring();  // ← 매 프레임 호출!
+      }
+  }
+
+  문제 시나리오:
+
+  1. 적이 플레이어에게 접근
+  2. EncounterRadius(500) 내 진입
+  3. TryStartFiring() 호출 → bIsFiring = true
+  4. 첫 발 발사 → CurrentBurstCount 오류로 즉시 EndFiring()
+  5. bIsFiring = false, bHasFired = true
+  6. 다음 프레임:
+     - Tick() 진입
+     - !bIsFiring → true
+     - TryStartFiring() 호출
+     - ⚠️ bHasFired 체크가 없어서 다시 발사 시작!
+  7. 무한 반복...
+
+  ---
+  종합 분석
+
+  3가지 버그가 복합적으로 작용:
+
+  1. bHasFired 가드 제거 → 한 번 발사한 적이 계속 재발사 가능
+  2. CurrentBurstCount 초기화 오류 → 1발만 발사하고 즉시 종료
+  3. EndFiring 후 즉시 재발사 → bIsFiring = false가 되면 다음 프레임에 TryStartFiring() 재호출
+
+  결과:
+  - 적이 EncounterRadius 내에 있는 동안 매 프레임마다 발사 시도
+  - 각 시도마다 1발만 발사하고 즉시 종료
+  - 결과적으로 FireInterval(0.2초) 무시하고 매 프레임(~0.016초)마다 총알 1발씩 발사
+  - 의도한 3~5발 버스트가 아니라 무한 연사
+
+  ---
+  수정 방안
+
+  수정 1: bHasFired 가드 복원
+
+  void AEnemyActor::TryStartFiring()
+  {
+      // ✅ 가드 추가
+      if (bHasFired || bIsFiring)
+      {
+          return;
+      }
+
+      APawn* PlayerPawn = GetWorld() ? GetWorld()->GetFirstPlayerController()->GetPawn() : nullptr;
+      // ... 나머지 코드
+  }
+
+  수정 2: CurrentBurstCount 초기화 수정
+
+  // EnemyActor.cpp:119-120
+  TargetBurstCount = FMath::RandRange(MinBurstCount, MaxBurstCount);
+  CurrentBurstCount = 0;  // ✅ 0으로 시작
+
+  두 수정을 모두 적용해야 정상 작동:
+
+  ┌─────────────┬───────────────────────┬──────────────────────────┬────────────┐
+  │    상황     │ bHasFired 가드만 적용 │ CurrentBurstCount만 수정 │ 둘 다 적용 │
+  ├─────────────┼───────────────────────┼──────────────────────────┼────────────┤
+  │ 발사 횟수   │ 1발                   │ 매 프레임 3~5발          │ 3~5발      │
+  ├─────────────┼───────────────────────┼──────────────────────────┼────────────┤
+  │ 재발사 여부 │ X (정상)              │ O (버그)                 │ X (정상)   │
+  ├─────────────┼───────────────────────┼──────────────────────────┼────────────┤
+  │ 정상 작동   │ X                     │ X                        │ O          │
+  └─────────────┴───────────────────────┴──────────────────────────┴────────────┘
+
+  ---
+  검증 로그
+
+  // TryStartFiring() 시작 부분
+  void AEnemyActor::TryStartFiring()
+  {
+      UE_LOG(LogTemp, Warning, TEXT("[Enemy] TryStartFiring - bHasFired: %d, bIsFiring: %d"),
+             bHasFired, bIsFiring);
+
+      // ... 기존 코드
+
+      // 118행 이후
+      UE_LOG(LogTemp, Warning, TEXT("[Enemy] Start Firing - Target: %d, Current: %d"),
+             TargetBurstCount, CurrentBurstCount);
+  }
+
+  // FireOneBullet()
+  void AEnemyActor::FireOneBullet()
+  {
+      CurrentBurstCount++;
+      UE_LOG(LogTemp, Warning, TEXT("[Enemy] FireOneBullet - Current: %d / Target: %d"),
+             CurrentBurstCount, TargetBurstCount);
+      // ... 나머지 코드
+  }
+
+  예상 로그 (현재 버그 상태):
+  [Enemy] TryStartFiring - bHasFired: 0, bIsFiring: 0
+  [Enemy] Start Firing - Target: 3, Current: 3
+  [Enemy] FireOneBullet - Current: 4 / Target: 3  ← 즉시 종료
+  [Enemy] TryStartFiring - bHasFired: 1, bIsFiring: 0  ← 다시 호출!
+  [Enemy] Start Firing - Target: 4, Current: 4
+  [Enemy] FireOneBullet - Current: 5 / Target: 4
+  [Enemy] TryStartFiring - bHasFired: 1, bIsFiring: 0
+  ... (무한 반복)
+
+  ---
+  결론
+
+  원인:
+  1. bHasFired 가드 제거로 재발사 가능
+  2. CurrentBurstCount = TargetBurstCount 초기화 오류로 1발만 발사
+  3. 두 버그가 합쳐져서 매 프레임마다 1발씩 무한 발사
+
+  해결:
+  1. TryStartFiring() 시작 부분에 if (bHasFired || bIsFiring) return; 추가
+  2. CurrentBurstCount = 0;으로 초기화
+
+  우선순위: P0 - 게임플레이에 치명적 영향 (적이 무한 연사)
+

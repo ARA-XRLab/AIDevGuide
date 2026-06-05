@@ -1,0 +1,58 @@
+name: QA Report Slack Notify
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Documents/Report/issue_report_*.md'
+
+jobs:
+  notify-slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Collect report files
+        id: collect
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- 'Documents/Report/issue_report_*.md' || true)
+          if [ -z "$files" ]; then
+            echo "files=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$files" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Send to Slack
+        if: steps.collect.outputs.files != ''
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          FILES: ${{ steps.collect.outputs.files }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          payload=$(python - <<'PY'
+import os
+import json
+from pathlib import Path
+
+files = [f for f in os.environ.get('FILES', '').splitlines() if f.strip()]
+parts = []
+for f in files:
+    path = Path(f)
+    try:
+        content = path.read_text(encoding='utf-8')
+    except Exception:
+        content = path.read_text()
+    parts.append(f"*{f}*\n```\n{content}\n```")
+
+text = "\n\n".join(parts) if parts else "No issue report files found."
+print(json.dumps({"text": text}))
+PY
+)
+          curl -X POST -H 'Content-type: application/json' --data "$payload" "$SLACK_WEBHOOK_URL"

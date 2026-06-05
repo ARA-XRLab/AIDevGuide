@@ -1,0 +1,44 @@
+✦ 적의 발사 패턴이 종료되지 않고 무한히 반복되는 원인은 EnemyActor.cpp의 TryStartFiring() 함수 내에서 발사 여부를 체크하는 가드 로직(Guard Logic)이 누락되었기 때문입니다.
+
+
+  구체적인 분석 내용은 다음과 같습니다.
+
+
+  1. 원인 분석: 발사 가드 로직 누락
+  TryStartFiring() 함수를 보면, 이미 발사를 완료했는지(bHasFired) 혹은 현재 발사 중인지(bIsFiring)를 확인하는 조건문이 주석 처리되어 있거나 제거되어 있습니다.
+
+
+    1 // Source/SpaceShooter/Private/EnemyActor.cpp
+    2
+    3 void AEnemyActor::TryStartFiring()
+    4 {
+    5     // 원인: bHasFired / bIsFiring 체크 로직이 없습니다.
+    6     // 이로 인해 EndFiring()이 호출되어 bIsFiring이 false가 되는 순간, 
+    7     // 다음 Tick에서 다시 TryStartFiring()이 호출되어 무한 반복됩니다.
+    8
+    9     // (생략)
+   10     bIsFiring = true; // 다시 true로 설정하며 패턴 재시작
+   11     // (생략)
+   12 }
+
+
+  2. 실행 흐름상의 문제점
+   1. Tick: !bIsFiring일 때 TryStartFiring()을 매 프레임 호출합니다.
+   2. TryStartFiring: 발사 조건을 만족하면 bIsFiring = true로 만들고 연사(Burst)를 시작합니다.
+   3. EndFiring: 연사가 끝나면 bIsFiring = false로 바꾸고 bHasFired = true를 설정합니다.
+   4. 다음 프레임 Tick: bIsFiring이 다시 false이므로 TryStartFiring()이 다시 호출됩니다. 이때 bHasFired를 체크하지 않으므로 적은 무한히 연사 패턴을 반복하게 됩니다.
+
+
+  3. 추가적인 로직 오류 (Burst Count 초기화)
+  TryStartFiring() 함수 내에서 카운트 초기화 코드에도 오류가 발견되었습니다.
+   1 // 코드 내 현재 상태
+   2 TargetBurstCount = FMath::RandRange(MinBurstCount, MaxBurstCount);
+   3 CurrentBurstCount = TargetBurstCount; // <- 오류: 0으로 초기화해야 합니다.
+  CurrentBurstCount를 TargetBurstCount와 동일하게 설정하고 있어, 첫 발사 후 즉시 종료 조건(CurrentBurstCount >= TargetBurstCount)에 걸리게 됩니다. 이로 인해 한 발 쏘고 바로 종료되었다가 다음 프레임에 다시 시작되는 현상이 겹쳐서 발생하고 있습니다.
+
+  해결 방안
+   - TryStartFiring() 최상단에 if (bHasFired || bIsFiring) return; 조건을 추가해야 합니다.
+   - CurrentBurstCount를 0으로 초기화하도록 수정해야 합니다.
+
+
+  해당 내용에 대해 수정을 진행할까요?
