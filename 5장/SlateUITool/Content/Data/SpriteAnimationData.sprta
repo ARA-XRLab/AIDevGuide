@@ -1,0 +1,8 @@
+{
+	"imagePath": "/Game/Dog_Walk.Dog_Walk",
+	"rows": 2,
+	"columns": 4,
+	"totalFrames": 8,
+	"fps": 12,
+	"loop": true
+}

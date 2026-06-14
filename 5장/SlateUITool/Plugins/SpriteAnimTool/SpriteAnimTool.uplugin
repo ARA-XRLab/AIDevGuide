@@ -1,0 +1,19 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1.0",
+	"FriendlyName": "SpriteAnimTool",
+	"Description": "Editor plugin for previewing custom 2D sprite sheet animations.",
+	"Category": "Editor",
+	"CreatedBy": "OpenAI Codex",
+	"CanContainContent": false,
+	"IsBetaVersion": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "SpriteAnimToolEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	]
+}
